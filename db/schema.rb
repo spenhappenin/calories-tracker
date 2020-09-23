@@ -10,53 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_14_195042) do
+ActiveRecord::Schema.define(version: 2020_05_13_181824) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "companies", force: :cascade do |t|
-    t.string "title"
-    t.text "description"
-    t.text "logo_url", default: "https://d3bza9ldbeb18h.cloudfront.net/assets/placeholder-company-b9d0a167b1f7460768517d115285de2337c6e2a84f4285617722efa587c693fc.png"
-    t.string "industry"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id", null: false
-    t.index ["user_id"], name: "index_companies_on_user_id"
-  end
-
-  create_table "company_notes", force: :cascade do |t|
-    t.string "title"
-    t.string "body"
-    t.bigint "company_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["company_id"], name: "index_company_notes_on_company_id"
-  end
-
-  create_table "events", force: :cascade do |t|
-    t.string "event_type"
-    t.string "sub_type"
-    t.datetime "scheduled_date"
-    t.boolean "complete", default: false
-    t.bigint "job_application_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["job_application_id"], name: "index_events_on_job_application_id"
-  end
-
-  create_table "job_applications", force: :cascade do |t|
-    t.date "date_submitted"
-    t.string "position"
-    t.integer "salary"
-    t.text "description"
-    t.string "status", default: "pending"
-    t.bigint "company_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["company_id"], name: "index_job_applications_on_company_id"
-  end
 
   create_table "users", force: :cascade do |t|
     t.string "first_name"
@@ -69,8 +26,4 @@ ActiveRecord::Schema.define(version: 2020_07_14_195042) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "companies", "users"
-  add_foreign_key "company_notes", "companies"
-  add_foreign_key "events", "job_applications"
-  add_foreign_key "job_applications", "companies"
 end
