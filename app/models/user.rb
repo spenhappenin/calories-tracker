@@ -17,6 +17,9 @@ class User < ApplicationRecord
 
   # Associations
 
+  # Validations
+  validates :gender, inclusion: { in: %w(m f) }
+
   def password_check(password_confirmation)
     self.password == password_confirmation ? true : false
   end

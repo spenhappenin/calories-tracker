@@ -1,6 +1,5 @@
 import React, { useContext, } from 'react';
 
-import styled from 'styled-components';
 import { Link, } from 'react-router-dom';
 import { useHistory, } from "react-router-dom";
 import { Menu, } from 'semantic-ui-react';
@@ -14,10 +13,9 @@ const Navbar = () => {
   return (
     <Menu>
       <Link to="/">
-        <LogoTab name="home">
-          {/* <Logo src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSAzf6Vt-WUzEecYB8KJptY8ntVIqp17mu4pg&usqp=CAU" /> */}
+        <Menu.Item>
           Calories Tracker
-        </LogoTab>
+        </Menu.Item>
       </Link>
 
       <Menu.Menu position="right">
@@ -47,12 +45,5 @@ const Navbar = () => {
     </Menu>
   );
 };
-
-const LogoTab = styled.div`
-`;
-
-const Logo = styled.img`
-  width: 300px;
-`;
 
 export default Navbar;
