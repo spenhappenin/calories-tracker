@@ -1,6 +1,7 @@
 import React, { useContext, useState, } from 'react';
 
 import { useHistory, } from "react-router-dom";
+import { Container, Form, } from 'semantic-ui-react';
 
 import { AuthContext, } from '../providers/AuthProvider';
 
@@ -30,57 +31,55 @@ const Registration = (props) => {
   };
 
   return (
-    <div>
+    <Container>
       <h1>Register</h1>
-      <form onSubmit={handleSubmit}>
-      <label>First Name:</label>
-        <input
-          label="First Name"
-          type="text"
-          value={firstName}
-          required
-          onChange={(e, { value, }) => setFirstName(value)}
-        />
-        <label>Last Name:</label>
-        <input
-          label="Last Name"
-          type="text"
-          value={lastName}
-          required
-          onChange={(e, { value, }) => setLastName(value)}
-        />
-        <br />
-        <label>Email:</label>
-        <input
+      <Form onSubmit={handleSubmit}>
+        <Form.Group widths="equal">
+          <Form.Input
+            label="First Name"
+            type="text"
+            value={firstName}
+            required
+            onChange={(e, { value, }) => setFirstName(value)}
+          />
+          <Form.Input
+            label="Last Name"
+            type="text"
+            value={lastName}
+            required
+            onChange={(e, { value, }) => setLastName(value)}
+          />
+        </Form.Group>
+        <Form.Input
           label="Email"
           type="email"
           value={email}
           required
           onChange={(e, { value, }) => setEmail(value)}
         />
-        <label>Password:</label>
-        <input
-          label="Password"
-          type="password"
-          value={password}
-          required
-          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-          title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
-          onChange={(e, { value, }) => setPassword(value)}
-        />
-        <label>Password Confirmation:</label>
-        <input
-          label="Password Confirmation"
-          type="password"
-          value={passwordConfirmation}
-          required
-          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-          title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
-          onChange={(e, { value, }) => setPasswordConfirmation(value)}
-        />
-        <button type="submit">Register</button>
-      </form>
-    </div>
+        <Form.Group widths="equal">
+          <Form.Input
+            label="Password"
+            type="password"
+            value={password}
+            required
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+            title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+            onChange={(e, { value, }) => setPassword(value)}
+            />
+          <Form.Input
+            label="Password Confirmation"
+            type="password"
+            value={passwordConfirmation}
+            required
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+            title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+            onChange={(e, { value, }) => setPasswordConfirmation(value)}
+          />
+        </Form.Group>
+        <Form.Button type="submit">Register</Form.Button>
+      </Form>
+    </Container>
   );
 };
 

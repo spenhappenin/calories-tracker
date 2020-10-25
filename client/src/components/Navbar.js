@@ -3,6 +3,7 @@ import React, { useContext, } from 'react';
 import styled from 'styled-components';
 import { Link, } from 'react-router-dom';
 import { useHistory, } from "react-router-dom";
+import { Menu, } from 'semantic-ui-react';
 
 import { AuthContext, } from '../providers/AuthProvider';
 
@@ -11,7 +12,7 @@ const Navbar = () => {
   const history = useHistory();
 
   return (
-    <div>
+    <Menu>
       <Link to="/">
         <LogoTab name="home">
           {/* <Logo src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSAzf6Vt-WUzEecYB8KJptY8ntVIqp17mu4pg&usqp=CAU" /> */}
@@ -19,33 +20,31 @@ const Navbar = () => {
         </LogoTab>
       </Link>
 
-      <div>
+      <Menu.Menu position="right">
         {
           authenticated ?
             <>
-              <Link to="/applications">
-                Applications
-              </Link>
-              <Link to="/companies">
-                Companies
-              </Link>
-              <div onClick={() => logout(history.push)}>
+              <Menu.Item name="logout" onClick={() => logout(history.push)}>
                 LOGOUT
-              </div>
+              </Menu.Item>
             </>
           :
             <>
               <Link to="/login">
-                Login
+                <Menu.Item name="login">
+                  Login
+                </Menu.Item>
               </Link>
               <Link to="/register">
-                Register
+                <Menu.Item name="register">
+                  Register
+                </Menu.Item>
               </Link>
             </>
         }
 
-      </div>
-    </div>
+      </Menu.Menu>
+    </Menu>
   );
 };
 

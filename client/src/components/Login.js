@@ -1,5 +1,6 @@
 import React, { useContext, useState, } from 'react';
 import { useHistory, } from 'react-router-dom';
+import { Container, Form, } from 'semantic-ui-react';
 
 import { AuthContext, } from '../providers/AuthProvider';
 
@@ -15,28 +16,26 @@ const Login = ({  }) => {
   };
 
   return (
-    <div>
+    <Container>
       <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
-        <label>Email:</label>
-        <input
+      <Form onSubmit={handleSubmit}>
+        <Form.Input
           name="email"
           label="Email"
           type="email"
           required
           onChange={(e) => setEmail(e.target.value) }
         />
-        <label>Password:</label>
-        <input
+        <Form.Input
           name="password"
           label="Password"
           type="password"
           required
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">Login</button>
-      </form>
-    </div>
+        <Form.Button type="submit">Login</Form.Button>
+      </Form>
+    </Container>
   );
 };
 

@@ -7,6 +7,8 @@ import ScrollWrapper from './components/ScrollWrapper';
 import { BrowserRouter as Router, } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 
+import 'semantic-ui-css/semantic.min.css'
+
 ReactDOM.render(
   <React.StrictMode>
     <Router>

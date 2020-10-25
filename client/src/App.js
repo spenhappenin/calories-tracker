@@ -1,6 +1,7 @@
 import React, { lazy, Suspense, useContext, } from 'react';
 
 import { Route, Switch, } from 'react-router-dom';
+import { Container, } from 'semantic-ui-react';
 import { AuthContext, } from './providers/AuthProvider';
 
 const AuthRoute = lazy(() => import('./components/AuthRoute'));
@@ -18,24 +19,26 @@ const App = () => {
     <>
       <Suspense fallback={<div>Loading...</div>}>
         <Navbar />
-          <FetchUser>
-            <Switch>
-              <AuthRoute
-                exact
-                path="/login"
-                component={Login}
-              />
-              <AuthRoute
-                exact
-                path="/register"
-                component={Registration}
-              />
-              <Route
-                path="*"
-                component={NotFound}
-              />
-            </Switch>
-          </FetchUser>
+          <Container>
+            <FetchUser>
+              <Switch>
+                <AuthRoute
+                  exact
+                  path="/login"
+                  component={Login}
+                  />
+                <AuthRoute
+                  exact
+                  path="/register"
+                  component={Registration}
+                  />
+                <Route
+                  path="*"
+                  component={NotFound}
+                />
+              </Switch>
+            </FetchUser>
+          </Container>
           <br />
           <br />
           <br />
