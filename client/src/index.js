@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { AuthProvider, } from "./providers/AuthProvider";
+import { FlashProvider, } from "./providers/FlashProvider";
 import './index.css';
 import App from './App';
 import ScrollWrapper from './components/ScrollWrapper';
@@ -13,9 +14,11 @@ ReactDOM.render(
   <React.StrictMode>
     <Router>
       <AuthProvider>
-        <ScrollWrapper>
-          <App />
-        </ScrollWrapper>
+        <FlashProvider>
+          <ScrollWrapper>
+            <App />
+          </ScrollWrapper>
+        </FlashProvider>
       </AuthProvider>
     </Router>
   </React.StrictMode>,

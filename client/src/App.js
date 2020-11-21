@@ -7,6 +7,7 @@ import { AuthContext, } from './providers/AuthProvider';
 const AuthRoute = lazy(() => import('./components/AuthRoute'));
 const Dashboard = lazy(() => import('./components/Dashboard'));
 const FetchUser = lazy(() => import('./components/FetchUser'));
+const FlashMessage = lazy(() => import("./components/FlashMessage"));
 const Items = lazy(() => import('./components/Items'));
 const Item = lazy(() => import('./components/Item'));
 const ItemForm = lazy(() => import('./components/ItemForm'));
@@ -23,6 +24,7 @@ const App = () => {
     <>
       <Suspense fallback={<div>Loading...</div>}>
         <Navbar />
+          <FlashMessage />
           <Container>
             <FetchUser>
               <Switch>

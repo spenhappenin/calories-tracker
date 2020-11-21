@@ -14,8 +14,7 @@ class Api::ItemsController < ApiController
     if item.save
       render json: 'Item created.'
     else
-      # TODO: Render proper errors
-      render json: 'Something went wrong.'
+      render_error(item)
     end
   end
 
@@ -23,8 +22,7 @@ class Api::ItemsController < ApiController
     if @item.update(item_params)
       render json: 'Item updated.'
     else
-      # TODO: Render proper errors
-      render json: 'Something went wrong.'
+      render_error(@item)
     end
   end
 
@@ -32,8 +30,7 @@ class Api::ItemsController < ApiController
     if @item.destroy
       render json: 'Item Deleted.'
     else
-      # TODO: Render proper errors.
-      render json: 'Something went wrong.'
+      render_error(@item)
     end
   end
 

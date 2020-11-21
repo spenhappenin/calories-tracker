@@ -1,11 +1,14 @@
-import React, { useEffect, useState, } from 'react';
+import React, { useContext, useEffect, useState, } from 'react';
 import axios from '../utils/webRequests';
 import { Form, } from 'semantic-ui-react';
 import { useHistory, useParams, } from 'react-router-dom';
 
+import { FlashContext, } from '../providers/FlashProvider';
+
 const ItemForm = () => {
   const history = useHistory();
   const { id, } = useParams();
+  const { setFlash, } = useContext(FlashContext);
   const [name, setName] = useState('');
   const [cals, setCals] = useState('');
 
@@ -22,12 +25,11 @@ const ItemForm = () => {
     e.preventDefault();
     axios.post('/api/items', { name, cals, })
       .then( () => {
-        // TODO: flash message
+        setFlash('Item created.', 'green');
         history.push('/items');
       })
-      .catch( err => {
-        // TODO: Error handling
-        console.log(err);
+      .catch( ({ errors, }) => {
+        setFlash(errors, 'red');
       })
   };
 
