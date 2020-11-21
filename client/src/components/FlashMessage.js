@@ -32,9 +32,9 @@ const FlashContainer = styled.div`
   font-weight: bold;
   border-radius: 2px;
   box-shadow: 1px 1px 10px #00000026;
-  position: absolute;
+  /* position: absolute; */
   width: 80%;
-  z-index: 999;
+  /* z-index: 999; */
   cursor: pointer;
 `;
 

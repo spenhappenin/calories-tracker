@@ -45,7 +45,6 @@ const Navbar = () => {
               </Link>
             </>
         }
-
       </Menu.Menu>
     </Menu>
   );
