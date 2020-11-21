@@ -8,6 +8,7 @@ const AuthRoute = lazy(() => import('./components/AuthRoute'));
 const Dashboard = lazy(() => import('./components/Dashboard'));
 const FetchUser = lazy(() => import('./components/FetchUser'));
 const Items = lazy(() => import('./components/Items'));
+const Item = lazy(() => import('./components/Item'));
 const ItemForm = lazy(() => import('./components/ItemForm'));
 const Login = lazy(() => import('./components/Login'));
 const Navbar = lazy(() => import('./components/Navbar'));
@@ -37,8 +38,13 @@ const App = () => {
                 />
                 <ProtectedRoute
                   exact
-                  path="/items/:id"
+                  path="/items/new"
                   component={ItemForm}
+                />
+                <ProtectedRoute
+                  exact
+                  path="/items/:id"
+                  component={Item}
                 />
                 <AuthRoute
                   exact

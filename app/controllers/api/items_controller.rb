@@ -27,7 +27,7 @@ class Api::ItemsController < ApiController
 
   private
     def set_item
-      @item = current_user.items.find(params[:item])
+      @item = current_user.items.find(params[:id])
     end
 
     def item_params

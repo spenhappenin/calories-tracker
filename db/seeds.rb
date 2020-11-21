@@ -49,9 +49,9 @@ user2 = User.create(
 #########################
 
 20.times do
-  user.items.create(name: Faker::Food.dish, cals: [50..1000].sample)
+  user.items.create(name: Faker::Food.dish, cals: rand(50...1000))
 end
 
 20.times do
-  user2.items.create(name: Faker::Food.dish, cals: [50..1000].sample)
+  user2.items.create(name: Faker::Food.dish, cals: rand(50...1000))
 end
