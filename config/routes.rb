@@ -36,20 +36,6 @@ Rails.application.routes.draw do
     post 'registration', to: 'authentication#registration'
     post 'validate_token', to: 'authentication#validate_token'
 
-    resources :companies do
-      resources :company_notes, except: [:index, :show]
-      resources :job_applications, except: :index
-    end
-
-    resources :job_applications, only: [:create, :update] do
-      resources :events, only: [:create, :update]
-    end
-
-    # Upcoming Events
-    get 'upcoming_events', to: 'events#upcoming_events'
-
-
-    resources :all_applications, only: :index
-
+    resources :items
   end
 end

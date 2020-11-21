@@ -16,6 +16,7 @@ class User < ApplicationRecord
   has_secure_password
 
   # Associations
+  has_many :items, dependent: :destroy
 
   # Validations
   validates :gender, inclusion: { in: %w(m f) }

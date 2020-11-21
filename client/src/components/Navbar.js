@@ -19,6 +19,11 @@ const Navbar = () => {
       </Link>
 
       <Menu.Menu position="right">
+        <Link to="/items">
+          <Menu.Item>
+            Items
+          </Menu.Item>
+        </Link>
         {
           authenticated ?
             <>
