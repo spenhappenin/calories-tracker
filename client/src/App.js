@@ -46,6 +46,11 @@ const App = () => {
                   path="/items/:id"
                   component={Item}
                 />
+                <ProtectedRoute
+                  exact
+                  path="/items/:id/edit"
+                  component={ItemForm}
+                />
                 <AuthRoute
                   exact
                   path="/login"

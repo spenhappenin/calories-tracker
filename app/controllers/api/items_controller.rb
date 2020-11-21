@@ -20,9 +20,21 @@ class Api::ItemsController < ApiController
   end
 
   def update
+    if @item.update(item_params)
+      render json: 'Item updated.'
+    else
+      # TODO: Render proper errors
+      render json: 'Something went wrong.'
+    end
   end
 
   def destroy
+    if @item.destroy
+      render json: 'Item Deleted.'
+    else
+      # TODO: Render proper errors.
+      render json: 'Something went wrong.'
+    end
   end
 
   private

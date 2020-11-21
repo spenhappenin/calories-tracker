@@ -1,12 +1,22 @@
-import React, { useState, } from 'react';
+import React, { useEffect, useState, } from 'react';
 import axios from '../utils/webRequests';
 import { Form, } from 'semantic-ui-react';
-import { useHistory, } from 'react-router-dom';
+import { useHistory, useParams, } from 'react-router-dom';
 
 const ItemForm = () => {
   const history = useHistory();
+  const { id, } = useParams();
   const [name, setName] = useState('');
   const [cals, setCals] = useState('');
+
+  useEffect(() => {
+    if (id)
+      axios.get(`/api/items/${id}`)
+        .then(({ data }) => {
+          setName(data.name);
+          setCals(data.cals);
+        })
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,7 +33,7 @@ const ItemForm = () => {
 
   return (
     <>
-      <h1>New Item</h1>
+      <h1>{ id ? 'Edit Item' : 'New Item' }</h1>
       <Form onSubmit={handleSubmit}>
         <Form.Group widths="equal">
           <Form.Input
