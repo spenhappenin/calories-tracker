@@ -16,6 +16,7 @@ const Navbar = lazy(() => import('./components/Navbar'));
 const NotFound = lazy(() => import('./components/NotFound'));
 const Registration = lazy(() => import('./components/Registration'));
 const ProtectedRoute = lazy(() => import('./components/ProtectedRoute'));
+const Settings = lazy(() => import('./components/settings/Settings'));
 
 const App = () => {
   const { authenticated, } = useContext(AuthContext);
@@ -52,6 +53,11 @@ const App = () => {
                   exact
                   path="/items/:id/edit"
                   component={ItemForm}
+                />
+                <ProtectedRoute
+                  exact
+                  path="/settings"
+                  component={Settings}
                 />
                 <AuthRoute
                   exact

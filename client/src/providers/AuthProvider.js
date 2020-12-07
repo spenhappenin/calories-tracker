@@ -1,23 +1,27 @@
-import React, { useState, } from 'react';
+import React, { useContext, useState, } from 'react';
 import axios from "../utils/webRequests";
+import { FlashContext, } from './FlashProvider';
 
 export const AuthContext = React.createContext();
 export const AuthConsumer = AuthContext.Consumer;
 
 export const AuthProvider = ({ children, }) => {
+  // const { setFlash, } = useContext(FlashContext);
+
+  // State
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
   const [authenticated, setAuthenticated] = useState(false);
 
   const registration = (user, push) => {
     axios.post('/api/registration', { ...user })
-      .then( res => {
-        setUser(res.data);
+      .then( ({ data, }) => {
+        setUser(data);
         authenticate(user, push);
         push('/');
       })
-      .catch( err => {
-        // TODO: Render flash
+      .catch( ({ messages, }) => {
+        // setFlash(messages, 'red');
       })
   };
 
@@ -31,7 +35,8 @@ export const AuthProvider = ({ children, }) => {
         push('/');
       })
       .catch( err => {
-        // TODO: Render flash
+        debugger
+        // setFlash('', 'red');
         setLoading(false);
         setAuthenticated(false);
         setUser(null);

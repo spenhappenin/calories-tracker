@@ -2,12 +2,12 @@ import React, { useContext, } from 'react';
 
 import { Link, } from 'react-router-dom';
 import { useHistory, } from "react-router-dom";
-import { Menu, } from 'semantic-ui-react';
+import { Dropdown, Icon, Menu, } from 'semantic-ui-react';
 
 import { AuthContext, } from '../providers/AuthProvider';
 
 const Navbar = () => {
-  const { authenticated, logout, } = useContext(AuthContext);
+  const { authenticated, logout, user, } = useContext(AuthContext);
   const history = useHistory();
 
   return (
@@ -19,17 +19,22 @@ const Navbar = () => {
       </Link>
 
       <Menu.Menu position="right">
-        <Link to="/items">
-          <Menu.Item>
-            Items
-          </Menu.Item>
-        </Link>
         {
           authenticated ?
             <>
-              <Menu.Item name="logout" onClick={() => logout(history.push)}>
-                LOGOUT
-              </Menu.Item>
+              <Link to="/items">
+                <Menu.Item>
+                  Items
+                </Menu.Item>
+              </Link>
+              <Dropdown text={user && `${user.first_name} ${user.last_name}`} simple item>
+                <Dropdown.Menu>
+                  <Link to="/settings">
+                    <Dropdown.Item>Settings</Dropdown.Item>
+                  </Link>
+                  <Dropdown.Item onClick={() => logout(history.push)}>Sign Out</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
             </>
           :
             <>

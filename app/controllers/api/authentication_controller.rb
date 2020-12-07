@@ -16,7 +16,7 @@ class Api::AuthenticationController < ApiController
     if @current_user.password_check(params[:password_confirmation]) && @current_user.save
       render json: @current_user
     else
-      # TODO: Error handling
+      render_errors(@current_user)
     end
   end
 
